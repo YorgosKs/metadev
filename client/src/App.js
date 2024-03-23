@@ -6,7 +6,6 @@ import Navigation from './components/Navbar';
 import ForgotPassword from './components/ForgotPassword';
 import Dashboard from './components/dashboard/Dashboard';
 import Employees from './components/employees/Employees';
-import Departments from './components/departments/Departments';
 import OpenPositions from './components/hr/OpenPositions';
 import NotFound from './components/404';
 import Protected from './Protected';
@@ -64,14 +63,6 @@ function App() {
             element={
               <Protected cookie={token}>
                 <Employees />
-              </Protected>
-            }
-          />
-          <Route
-            path='/departments'
-            element={
-              <Protected cookie={token}>
-                <Departments />
               </Protected>
             }
           />

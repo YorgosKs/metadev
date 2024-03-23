@@ -1,7 +1,7 @@
 import { NavLink, Navigate } from 'react-router-dom';
 import axios from '../axios/axios';
 import doodle from '../assets/welcome_char.svg';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import Cookies from 'universal-cookie';
 
 export default function Login() {

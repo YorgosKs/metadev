@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import axios from './axios/axios';
+import Cookies from 'universal-cookie';
 
-export default function Protected({ cookie, children }) {
+export default function Protected({ children }) {
   const [isAllowed, setIsAllowed] = useState(null);
   const location = useLocation();
+  const cookies = new Cookies();
+  const cookie = cookies.get('auth-token');
   useEffect(() => {
     const validateToken = async () => {
       if (!cookie) {
@@ -28,19 +31,20 @@ export default function Protected({ cookie, children }) {
     validateToken();
   }, [cookie]);
 
-  if (isAllowed === null) {
-    return <div>Loading...</div>; // Loading indicator
-  }
-
+  const publicRoutes = ['/login', '/register', '/forgot-password', '/'];
   const shouldRedirectToDashboard =
-    isAllowed &&
-    (location.pathname === '/login' ||
-      location.pathname === '/register' ||
-      location.pathname === '/forgot-password' ||
-      location.pathname === '/');
+    isAllowed && publicRoutes.includes(location.pathname);
 
   if (shouldRedirectToDashboard) {
     return <Navigate to='/dashboard' replace />;
+  }
+
+  const protectedRoutes = ['/dashboard', '/employees', '/open-positions'];
+  const shouldRedirectToLogin =
+    !isAllowed && protectedRoutes.includes(location.pathname);
+
+  if (shouldRedirectToLogin) {
+    return <Navigate to='/login' replace />;
   }
 
   return children;

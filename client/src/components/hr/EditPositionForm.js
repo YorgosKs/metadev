@@ -127,9 +127,9 @@ export default function EditPositionForm({
   };
 
   return (
-    <div className='new-position-form'>
+    <div className='edit-position-form'>
       <h2>Edit position</h2>
-      <form>
+      <form className='w-full mx-auto flex flex-col items-center'>
         <div className='form-group'>
           <label htmlFor='position-name'>Position name</label>
           <input

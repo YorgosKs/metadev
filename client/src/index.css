@@ -240,11 +240,11 @@ a.show-more:hover {
 }
 
 .list-header ul {
-  @apply w-full flex flex-row justify-between items-center border-b border-light-gray pb-2 px-2;
+  @apply w-full grid grid-cols-8 gap-8 justify-between items-center border-b border-light-gray px-2 pb-2;
 }
 
 .list-header ul li {
-  @apply w-[15%] text-dark-gray font-open-semi-bold text-base text-left;
+  @apply text-dark-gray font-open-semi-bold text-sm text-left;
 }
 
 .employees-list {
@@ -252,7 +252,7 @@ a.show-more:hover {
 }
 
 .employees-item-container {
-  @apply w-full flex flex-row justify-between items-center mb-2 px-2 py-4 rounded-xl;
+  @apply w-full flex flex-row justify-between items-center mb-2 py-4 rounded-xl;
 }
 
 .employees-item-container:nth-child(odd) {
@@ -260,11 +260,12 @@ a.show-more:hover {
 }
 
 .employees-item-container ul {
-  @apply w-full flex flex-row justify-center items-center gap-14;
+  @apply w-full grid grid-cols-8 gap-8  justify-center items-center px-2;
 }
 
 .employees-item-container ul li {
-  @apply w-[15%] text-des-blue font-open-regular text-base text-left;
+  @apply text-des-blue font-open-regular text-sm text-left;
+  word-break: break-all;
 }
 
 .positions-container {
@@ -324,11 +325,15 @@ a.show-more:hover {
 }
 
 .error-message {
-  @apply !text-red-500 !font-open-light !text-sm !my-2;
+  @apply !text-red-500 !font-open-light !text-sm !mb-2;
 }
 
 .new-position-form {
   @apply w-full flex flex-col justify-start items-center h-full absolute z-10 top-0 left-0 bg-white-smoke rounded-lg shadow-md p-8;
+}
+
+.edit-position-form {
+  @apply w-full flex flex-col justify-start items-center absolute z-10 top-0 left-0 bg-white-smoke rounded-lg shadow-md p-8;
 }
 
 .new-position-form h2 {
@@ -389,4 +394,24 @@ a.show-more:hover {
 
 .btn-group button:hover {
   @apply border-2 bg-transparent text-des-blue;
+}
+
+.index {
+  @apply w-4/5 mx-auto h-full flex flex-row justify-start items-start;
+}
+
+.index h1 {
+  @apply font-open-semi-bold text-4xl text-des-blue pt-16;
+}
+
+.index p {
+  @apply font-open-regular text-xl text-des-blue pt-2;
+}
+
+.index a {
+  @apply w-[200px] py-3 bg-des-blue text-white text-center font-open-regular text-base rounded-xl mt-3 border border-des-blue transition-colors duration-200;
+}
+
+.success-message {
+  @apply !text-green-500 !font-open-light !text-sm !mb-2;
 }

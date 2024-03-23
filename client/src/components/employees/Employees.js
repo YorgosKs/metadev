@@ -48,7 +48,6 @@ export default function Employees() {
   useEffect(() => {
     getEmployees();
     getEmployeesLengthPerDepartment();
-    console.log(departments);
   }, []);
 
   const handleInputChange = (value) => {

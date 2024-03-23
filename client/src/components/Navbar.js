@@ -2,7 +2,9 @@ import { NavLink, useLocation } from 'react-router-dom';
 import logo from '../assets/logo.svg';
 import burger from '../assets/burger.svg';
 import close from '../assets/close.svg';
+import userIcon from '../assets/user_icon.svg';
 import { useEffect, useRef } from 'react';
+import Cookies from 'universal-cookie';
 export default function Navigation() {
   const location = useLocation();
   const burgerBtnRef = useRef(null);
@@ -49,6 +51,13 @@ export default function Navigation() {
       });
     };
   }, []);
+
+  const logout = () => {
+    const cookies = new Cookies();
+    cookies.remove('auth-token');
+
+    window.location.href = '/';
+  };
 
   return (
     <div className='home-navbar'>
@@ -100,7 +109,6 @@ export default function Navigation() {
           className={
             location.pathname === '/dashboard' ||
             location.pathname === '/employees' ||
-            location.pathname === '/departments' ||
             location.pathname === '/open-positions'
               ? 'nav-links hidden'
               : 'hidden'
@@ -122,12 +130,6 @@ export default function Navigation() {
             Employees
           </NavLink>
           <NavLink
-            to='/departments'
-            className={location.pathname === '/departments' ? 'underline' : ''}
-          >
-            Departments
-          </NavLink>
-          <NavLink
             to='/open-positions'
             className={
               location.pathname === '/open-positions' ? 'underline' : ''
@@ -136,6 +138,21 @@ export default function Navigation() {
             Open Positions
           </NavLink>
         </div>
+        <NavLink
+          onClick={() => {
+            logout();
+          }}
+          className={
+            location.pathname === '/dashboard' ||
+            location.pathname === '/employees' ||
+            location.pathname === '/open-positions'
+              ? 'ml-auto flex items-center cursor-pointer'
+              : 'hidden'
+          }
+        >
+          <img src={userIcon} alt='user icon' className='mr-2' />
+          Logout
+        </NavLink>
       </nav>
     </div>
   );

@@ -67,16 +67,18 @@ export default function PositionItem({ position, getOpenPositions }) {
       )}
       <div className='position-item-detail'>
         <h3>
-          {positionName}{' '}
-          <button onClick={setOpenFormFunc} className='edit-position-button'>
-            Edit
-          </button>
-          <button
-            onClick={() => setDeleteModal(!deleteModal)}
-            className='delete-position-button'
-          >
-            Delete
-          </button>
+          {positionName}
+          <div className='flex gap-4'>
+            <button onClick={setOpenFormFunc} className='edit-position-button'>
+              Edit
+            </button>
+            <button
+              onClick={() => setDeleteModal(!deleteModal)}
+              className='delete-position-button'
+            >
+              Delete
+            </button>
+          </div>
         </h3>
         <h4>{department}</h4>
         <p>{formattedDate}</p>
@@ -84,17 +86,18 @@ export default function PositionItem({ position, getOpenPositions }) {
       </div>
       <div className='position-stats'>
         <ul>
-          <li>
-            Total Applications <span>{totalApplications || 0}</span>
+          <li className='w-full text-center '>
+            Total Applications
+            <span className='mt-2'>{totalApplications || 0}</span>
           </li>
           <li>
-            First Stage <span>{firstStage || 0}</span>
+            First Stage <span className='mt-8'>{firstStage || 0}</span>
           </li>
           <li>
-            Second Stage <span>{secondStage || 0}</span>
+            Second Stage <span className='mt-8'>{secondStage || 0}</span>
           </li>
           <li>
-            Final Stage <span>{finalStage || 0}</span>
+            Final Stage <span className='mt-8'>{finalStage || 0}</span>
           </li>
         </ul>
       </div>

@@ -1,7 +1,6 @@
 import QuickPositionItem from './QuickPositionItem';
 import { NavLink } from 'react-router-dom';
 export default function CurrentPositions({ positions }) {
-  console.log(positions);
   return (
     <div className='dashboard-item'>
       <div className='positions-quick-details'>

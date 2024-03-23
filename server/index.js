@@ -4,13 +4,24 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 const cors = require('cors');
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: 'http://localhost:3000',
+    methods: ['GET', 'POST', 'DELETE', 'OPTIONS'],
+    credentials: true,
+  })
+);
 
 // ROUTES
 const userRoute = require('./routes/user');
 const employeeRoute = require('./routes/employees');
 const positionRoute = require('./routes/positions');
 const departmentRoute = require('./routes/departments');
+
+app.use('/api/users', userRoute);
+app.use('/api/employees', employeeRoute);
+app.use('/api/positions', positionRoute);
+app.use('/api/departments', departmentRoute);
 
 // PORT CONNECTION
 const port = process.env.PORT || 5500;
@@ -27,17 +38,3 @@ try {
 } catch (error) {
   console.log(error);
 }
-
-app.use(
-  cors({
-    origin: 'http://localhost:3000',
-    methods: ['GET', 'POST', 'DELETE', 'OPTIONS'],
-    credentials: true,
-    allowedHeaders: ['Content-Type', 'Authorization'],
-  })
-);
-
-app.use('/api/users', userRoute);
-app.use('/api/employees', employeeRoute);
-app.use('/api/positions', positionRoute);
-app.use('/api/departments', departmentRoute);

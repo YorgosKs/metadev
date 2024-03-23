@@ -6,6 +6,7 @@ import Cookies from 'universal-cookie';
 import { useEffect, useState } from 'react';
 
 export default function Dashboard() {
+  console.log('Dashboard.js');
   const [employees, setEmployees] = useState([]);
   const [departments, setDepartments] = useState([]);
   const [positions, setPositions] = useState([]);
@@ -14,6 +15,24 @@ export default function Dashboard() {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
   const [search, setSearch] = useState('');
+
+  const getEmployees = async () => {
+    try {
+      const cookies = new Cookies();
+      const token = cookies.get('auth-token');
+      const response = await axios.get('/employees', {
+        headers: { 'auth-token': token },
+      });
+
+      if (response) {
+        setEmployees(response.data);
+        setSuccess(true);
+        setError('');
+      }
+    } catch (error) {
+      setError('Something went wrong');
+    }
+  };
 
   const getEmployeesLengthPerDepartment = async () => {
     try {
@@ -42,6 +61,8 @@ export default function Dashboard() {
       });
 
       if (response) {
+        response.data.reverse();
+        response.data.length = 3;
         setPositions(response.data);
         setSuccess(true);
         setError('');
@@ -52,6 +73,7 @@ export default function Dashboard() {
   };
 
   useEffect(() => {
+    getEmployees();
     getEmployeesLengthPerDepartment();
     getOpenPositions();
     localStorage.getItem('firstName') &&
@@ -75,7 +97,7 @@ export default function Dashboard() {
       </h2>
       <div className='dashboard-wrapper'>
         <div className='left-col'>
-          <EmployeesData />
+          <EmployeesData employees={employees} />
           <DepartmentsData departments={departments} error={error} />
         </div>
         <div className='right-col'>

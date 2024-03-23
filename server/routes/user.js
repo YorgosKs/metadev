@@ -94,7 +94,9 @@ router.post('/login', async (req, res) => {
     }
 
     // Create and assign token
-    const token = jwt.sign({ _id: emailExist._id }, process.env.SECRET_KEY);
+    const token = jwt.sign({ _id: emailExist._id }, process.env.SECRET_KEY, {
+      expiresIn: '1d',
+    });
 
     // Respond with token and user
     res
@@ -107,7 +109,6 @@ router.post('/login', async (req, res) => {
 });
 
 // confirm token
-
 router.get('/check', async (req, res) => {
   try {
     const token = req.header('auth-token');
@@ -130,6 +131,73 @@ router.get('/check', async (req, res) => {
     }
 
     return res.status(200).json(true);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// reset password
+router.post('/reset', async (req, res) => {
+  try {
+    // Email validation regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // Check if email is provided
+    if (!req.body.email) {
+      return res.status(400).json('Missing email!');
+    }
+
+    // Check if email is valid
+    if (!emailRegex.test(req.body.email)) {
+      return res.status(400).json('Invalid email');
+    }
+
+    // Check if email exists
+    const emailExist = await User.findOne({ email: req.body.email });
+
+    if (!emailExist) {
+      return res.status(400).json('Email does not exist!');
+    } else {
+      return res.status(200).json('Email exists!');
+    }
+  } catch (err) {
+    res.status(500).json("Couldn't reset password");
+    console.log(err);
+  }
+});
+
+// reset password after checking email
+router.post('/reset-password', async (req, res) => {
+  try {
+    // Password validation regex (at least 8 characters, 1 uppercase, 1 lowercase, 1 number)
+    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+
+    // Check if password is provided
+    if (!req.body.password) {
+      return res.status(400).json('Missing password!');
+    }
+
+    // Check if password is valid
+    if (!passwordRegex.test(req.body.password)) {
+      return res
+        .status(400)
+        .json(
+          'Password must be at least 8 characters long, contain at least 1 uppercase letter, 1 lowercase letter, and 1 number!'
+        );
+    }
+
+    // Hash password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(req.body.password, salt);
+
+    // update password
+    const user = await User.findOneAndUpdate(
+      { email: req.body.email },
+      { password: hashedPassword }
+    );
+
+    // save user and respond
+    res.status(200).json(user);
   } catch (err) {
     res.status(500).json(err);
   }
