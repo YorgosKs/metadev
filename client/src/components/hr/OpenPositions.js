@@ -71,7 +71,7 @@ export default function OpenPositions() {
           />
         ))}
       </div>
-      <div className='w-full flex flex-row gap-8'>
+      <div className='w-full mx-auto flex flex-row items-center justify-between md:justify-start gap-8 mt-10'>
         <button
           onClick={() => setCurrentPage(currentPage - 1)}
           disabled={currentPage === 1}

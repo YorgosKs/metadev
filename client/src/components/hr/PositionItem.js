@@ -68,7 +68,7 @@ export default function PositionItem({ position, getOpenPositions }) {
       <div className='position-item-detail'>
         <h3>
           {positionName}
-          <div className='flex gap-4'>
+          <div className='flex flex-row gap-4 mt-2 justify-between md:pl-6'>
             <button onClick={setOpenFormFunc} className='edit-position-button'>
               Edit
             </button>
@@ -88,16 +88,16 @@ export default function PositionItem({ position, getOpenPositions }) {
         <ul>
           <li className='w-full text-center '>
             Total Applications
-            <span className='mt-2'>{totalApplications || 0}</span>
+            <span>{totalApplications || 0}</span>
           </li>
           <li>
-            First Stage <span className='mt-8'>{firstStage || 0}</span>
+            First Stage <span>{firstStage || 0}</span>
           </li>
           <li>
-            Second Stage <span className='mt-8'>{secondStage || 0}</span>
+            Second Stage <span>{secondStage || 0}</span>
           </li>
           <li>
-            Final Stage <span className='mt-8'>{finalStage || 0}</span>
+            Final Stage <span>{finalStage || 0}</span>
           </li>
         </ul>
       </div>
