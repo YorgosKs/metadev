@@ -21,11 +21,8 @@ export default function NewPositionForm(props) {
             select.appendChild(option);
           });
         } else {
-          console.log('error');
         }
-      } catch (error) {
-        console.log(error);
-      }
+      } catch (error) {}
     };
     getDepartments();
   }, []);
@@ -64,9 +61,7 @@ export default function NewPositionForm(props) {
       if (response) {
         clearForm();
       }
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   return (

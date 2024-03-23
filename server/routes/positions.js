@@ -16,13 +16,9 @@ router.get('/', jwtAuth, async (req, res) => {
 router.post('/new', jwtAuth, async (req, res) => {
   try {
     const newPosition = new Position(req.body);
-    console.log(newPosition);
     const position = await newPosition.save();
     res.status(200).json(position);
-
-    console.log('Position has been created!', position);
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 });
@@ -31,13 +27,10 @@ router.post('/new', jwtAuth, async (req, res) => {
 router.put('/:id', jwtAuth, async (req, res) => {
   try {
     const position = await Position.findById(req.params.id);
-    console.log(position._id, req.body);
     if (position.userId === req.body.userId) {
-      console.log('ok');
       await position.updateOne({ $set: req.body });
       res.status(200).json('Position has been updated!');
     } else {
-      console.log('not ok');
       res.status(403).json('You can update only your position!');
     }
   } catch (err) {

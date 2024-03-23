@@ -51,7 +51,6 @@ export default function Employees() {
   }, []);
 
   const handleInputChange = (value) => {
-    console.log('eimai edw');
     const searchTerm = value;
 
     const initEmployees = [...employees];
@@ -62,7 +61,6 @@ export default function Employees() {
       searchTerm === undefined ||
       searchTerm.length === 0
     ) {
-      console.log('eimai sthn if');
       setFilteredEmployees(initEmployees);
     }
 

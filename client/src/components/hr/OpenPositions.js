@@ -4,7 +4,6 @@ import Cookies from 'universal-cookie';
 import { useEffect, useState } from 'react';
 import NewPositionForm from './NewPositionForm';
 export default function OpenPositions() {
-  console.log('OpenPositions.js');
   const [positions, setPositions] = useState([]);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);

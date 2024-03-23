@@ -6,7 +6,6 @@ import Cookies from 'universal-cookie';
 import { useEffect, useState } from 'react';
 
 export default function Dashboard() {
-  console.log('Dashboard.js');
   const [employees, setEmployees] = useState([]);
   const [departments, setDepartments] = useState([]);
   const [positions, setPositions] = useState([]);

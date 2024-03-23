@@ -74,11 +74,8 @@ export default function EditPositionForm({
           document.getElementById('department').value = department;
         }
       } else {
-        console.log('error');
       }
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   useEffect(() => {
@@ -116,14 +113,11 @@ export default function EditPositionForm({
           headers: { 'auth-token': token },
         }
       );
-      console.log(response.data);
 
       if (response) {
         clearForm();
       }
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   return (

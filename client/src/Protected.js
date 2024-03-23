@@ -23,7 +23,6 @@ export default function Protected({ children }) {
         });
         setIsAllowed(response.data);
       } catch (error) {
-        console.log(error);
         setIsAllowed(false);
       }
     };
