@@ -19,8 +19,6 @@ export default function PositionItem({ position, getOpenPositions }) {
     _id,
   } = position;
 
-  console.log(_id);
-
   const localDate = new Date(date);
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
   const formattedDate = localDate.toLocaleDateString('en-US', options);
@@ -42,9 +40,7 @@ export default function PositionItem({ position, getOpenPositions }) {
       if (response) {
         getOpenPositions();
       }
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   return (

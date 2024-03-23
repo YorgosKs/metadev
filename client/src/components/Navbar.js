@@ -21,7 +21,6 @@ export default function Navigation() {
     const navLinkElements = navLinks.querySelectorAll('a');
     const handleBurgerClick = () => {
       navLinks.classList.toggle('vertical-nav');
-      console.log('click');
     };
 
     const burgerBtn = burgerBtnRef.current;

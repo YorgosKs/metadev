@@ -114,7 +114,6 @@ router.get('/check', async (req, res) => {
     const token = req.header('auth-token');
 
     if (!token) {
-      console.log('no token');
       return res.status(401).json(false);
     }
 
@@ -162,7 +161,6 @@ router.post('/reset', async (req, res) => {
     }
   } catch (err) {
     res.status(500).json("Couldn't reset password");
-    console.log(err);
   }
 });
 

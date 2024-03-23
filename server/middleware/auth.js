@@ -24,7 +24,6 @@ const jwtAuth = (req, res, next) => {
 
   try {
     const verified = jwt.verify(token, process.env.SECRET_KEY);
-    console.log('verified', verified);
     req.user = verified;
     next();
   } catch (err) {
