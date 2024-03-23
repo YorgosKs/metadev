@@ -2,6 +2,391 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Open Sans Regular';
+  src: url('./assets/fonts/OpenSans-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Open Sans Bold';
+  src: url('./assets/fonts/OpenSans-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'Open Sans Medium';
+  src: url('./assets/fonts/OpenSans-Medium.ttf');
+}
+
+@font-face {
+  font-family: 'Open Sans Light';
+  src: url('./assets/fonts/OpenSans-Light.ttf');
+}
+
+@font-face {
+  font-family: 'Open Sans SemiBold';
+  src: url('./assets/fonts/OpenSans-SemiBold.ttf');
+}
+
 body {
   @apply bg-gray-cyan m-0 p-0;
+}
+
+.home-navbar {
+  @apply pt-[31px] pb-[62px] px-11 md:px-[122px];
+}
+
+.home-navbar nav {
+  @apply flex flex-row justify-start items-center;
+}
+
+.burger-btn {
+  @apply mr-7 md:hidden;
+}
+
+.burger-btn img {
+  @apply w-[24px] h-[24px];
+}
+
+.logo {
+  @apply mr-[67px];
+}
+
+.logo img {
+  @apply w-[160px];
+}
+
+.nav-links {
+  @apply md:flex flex-row font-sans font-normal text-base text-des-blue;
+}
+
+.vertical-nav {
+  @apply absolute top-0 left-0 w-full h-[100vh] bg-des-blue text-white flex flex-col justify-center items-center z-10;
+}
+
+.vertical-nav a {
+  @apply !m-0 !mb-6;
+}
+
+.vertical-nav button {
+  @apply top-[49px] left-[44px] absolute;
+}
+
+.nav-links a {
+  @apply mr-[48px] text-center;
+}
+
+.login-container {
+  @apply w-11/12 md:w-4/5 xl:w-3/5 mb-10 flex flex-row justify-center items-center bg-white md:bg-gray-blue mx-auto p-3 rounded-xl shadow-md;
+}
+
+.login-image {
+  @apply hidden md:w-1/2 py-[124px] md:flex justify-center;
+}
+
+.login-form-wrapper {
+  @apply w-full md:w-1/2 bg-white rounded-xl h-full;
+}
+
+.login-form-wrapper h2 {
+  @apply font-open-semi-bold text-4xl text-des-blue text-center pt-16;
+}
+
+.login-form-wrapper p {
+  @apply font-open-regular text-xl text-des-blue text-center pt-2;
+}
+
+.login-form-wrapper form {
+  @apply flex flex-col justify-center items-center pt-[76px] w-full;
+}
+
+.login-form-wrapper form input {
+  @apply w-[80%] h-[48px] mb-8 border-b border-light-gray text-des-blue font-open-regular px-4 transition-colors duration-200 text-base;
+}
+
+.login-form-wrapper form input:focus {
+  @apply outline-none border-b-2 border-cyan;
+}
+
+.login-form-wrapper form input::placeholder {
+  @apply text-des-blue font-open-light text-base;
+}
+
+.login-form-wrapper form button {
+  @apply w-[80%] h-[54px] bg-des-blue text-white font-open-regular text-base rounded-[36px] mt-3 transition-colors duration-200;
+}
+
+.login-form-options {
+  @apply flex flex-col justify-between items-start w-[80%] mx-auto pt-8 mt-[101px] mb-[113px];
+}
+
+.login-form-options a {
+  @apply text-des-blue font-open-light text-sm;
+}
+
+.dashboard-container {
+  @apply max-w-[90%] mx-auto  h-full flex flex-col justify-start items-start;
+}
+
+.dashboard-container h2 {
+  @apply font-sans text-3xl text-des-blue pt-16 mb-[100px];
+}
+
+.dashboard-wrapper {
+  @apply w-full h-full flex flex-col md:flex-row justify-between items-start;
+}
+
+.left-col,
+.right-col {
+  @apply w-full md:w-1/2 h-full flex flex-col justify-start items-start;
+}
+
+.dashboard-item {
+  @apply w-[98%] min-h-[200px] px-8 py-10 rounded-xl shadow-sm mb-6 bg-white-smoke;
+}
+
+.employees-quick-details {
+  @apply w-full flex flex-row justify-between items-center;
+}
+
+.quick-details-list {
+  @apply w-1/2 flex flex-col justify-start items-start;
+}
+
+.quick-details-list li {
+  @apply text-des-blue font-open-regular text-base mb-6;
+}
+
+.quick-details-list li span {
+  @apply text-des-blue font-open-semi-bold text-base;
+}
+
+.departments-quick-details h3 {
+  @apply text-des-blue font-open-semi-bold text-2xl mb-6;
+}
+
+.positions-quick-details {
+  @apply w-full flex flex-col justify-between items-start;
+}
+
+.positions-quick-details h3 {
+  @apply text-des-blue font-open-semi-bold text-2xl mb-6;
+}
+
+.positions-details-list {
+  @apply w-full flex flex-col justify-between items-start;
+}
+
+.position-item {
+  @apply w-full flex flex-col justify-between items-start mb-14;
+}
+
+.position-item h3 {
+  @apply text-des-blue font-open-semi-bold text-xl mb-2 flex flex-row justify-between items-center w-full;
+}
+
+.position-item h3 button {
+  @apply text-gray-500 font-open-medium text-sm border-2 border-light-gray rounded-xl px-4 py-1 transition-colors duration-200;
+}
+
+.position-item h3 button:hover {
+  @apply border-des-blue bg-transparent text-des-blue;
+}
+
+.position-item h4 {
+  @apply text-gray-500 font-open-semi-bold;
+}
+.position-item p {
+  @apply text-gray-400 font-open-regular text-base;
+}
+
+p.short-description {
+  @apply text-black font-open-regular text-base mt-2;
+}
+
+p.empty-positions {
+  @apply text-gray-400 font-open-regular text-lg mt-2;
+}
+
+a.show-more {
+  @apply w-[200px] py-3 bg-des-blue text-white text-center font-open-regular text-base rounded-xl mt-3 border border-des-blue transition-colors duration-200;
+}
+
+a.show-more:hover {
+  @apply border-2 bg-transparent text-des-blue;
+}
+
+.employees-container {
+  @apply w-[90%] mx-auto h-full flex flex-col justify-start items-start;
+}
+
+.search-container {
+  @apply w-full flex flex-row justify-between items-center mb-10;
+}
+
+.search-container input {
+  @apply w-full h-[58px] rounded-xl text-des-blue font-open-regular px-4 border border-light-gray text-base transition-colors duration-300;
+}
+
+.search-container input:focus {
+  @apply outline-none border-2 border-dark-cyan;
+}
+
+.employees-list-container {
+  @apply w-full flex flex-col justify-start items-start bg-white-smoke rounded-xl shadow-sm px-7 py-12;
+}
+
+.list-header {
+  @apply w-full flex flex-row justify-between items-center mb-8;
+}
+
+.list-header ul {
+  @apply w-full flex flex-row justify-between items-center border-b border-light-gray pb-2 px-2;
+}
+
+.list-header ul li {
+  @apply w-[15%] text-dark-gray font-open-semi-bold text-base text-left;
+}
+
+.employees-list {
+  @apply w-full flex flex-col justify-start items-start;
+}
+
+.employees-item-container {
+  @apply w-full flex flex-row justify-between items-center mb-2 px-2 py-4 rounded-xl;
+}
+
+.employees-item-container:nth-child(odd) {
+  @apply bg-light-gray;
+}
+
+.employees-item-container ul {
+  @apply w-full flex flex-row justify-center items-center gap-14;
+}
+
+.employees-item-container ul li {
+  @apply w-[15%] text-des-blue font-open-regular text-base text-left;
+}
+
+.positions-container {
+  @apply w-[90%] mx-auto h-full flex flex-col justify-start items-start bg-white-smoke rounded-lg shadow-sm px-12 py-14;
+}
+
+.positions-header {
+  @apply w-full flex flex-row justify-between items-center mb-8;
+}
+
+.positions-header h2 {
+  @apply text-des-blue font-open-semi-bold text-2xl mb-8;
+}
+
+.positions-header button {
+  @apply w-[200px] h-[54px] bg-des-blue text-white font-open-regular text-base rounded-xl mt-3 border border-des-blue transition-colors duration-200;
+}
+
+.positions-header button:hover {
+  @apply border-2 bg-transparent text-des-blue;
+}
+
+.positions-list {
+  @apply w-full flex flex-col justify-start items-start;
+}
+
+.position-item {
+  @apply w-full flex flex-col md:flex-row justify-between items-start mb-8 rounded-lg px-3 py-4 transition-all duration-300;
+}
+
+.position-item:hover {
+  @apply bg-light-gray cursor-pointer;
+}
+
+.position-item:hover button {
+  @apply bg-des-blue text-white;
+}
+
+.position-item-detail {
+  @apply w-[45%] flex flex-col justify-start items-start;
+}
+
+.position-stats {
+  @apply w-[45%] flex flex-row justify-between items-start mb-8;
+}
+
+.position-stats ul {
+  @apply w-full flex flex-row justify-between items-start;
+}
+
+.position-stats ul li {
+  @apply w-full text-des-blue font-open-regular text-base flex flex-col items-center;
+}
+
+.position-stats ul li span {
+  @apply text-des-blue font-open-semi-bold text-2xl;
+}
+
+.error-message {
+  @apply !text-red-500 !font-open-light !text-sm !my-2;
+}
+
+.new-position-form {
+  @apply w-full flex flex-col justify-start items-center h-full absolute z-10 top-0 left-0 bg-white-smoke rounded-lg shadow-md p-8;
+}
+
+.new-position-form h2 {
+  @apply text-des-blue font-open-semi-bold text-2xl mb-8;
+}
+
+.new-position-form form {
+  @apply w-full flex flex-col justify-start items-center;
+}
+
+.form-group {
+  @apply w-[60%] flex flex-col justify-start items-start mb-8;
+}
+
+.form-group label {
+  @apply text-des-blue font-open-regular text-base mb-2;
+}
+
+.form-group input {
+  @apply w-full h-[48px] rounded-xl text-des-blue font-open-regular px-4 border border-light-gray text-base transition-colors duration-300;
+}
+
+.form-group input:focus {
+  @apply outline-none border-2 border-dark-cyan;
+}
+
+.form-group input::placeholder {
+  @apply text-des-blue font-open-light text-base;
+}
+
+.form-group select {
+  @apply w-full h-[48px] rounded-xl text-des-blue font-open-regular px-4 border border-light-gray text-base transition-colors duration-300;
+}
+
+.form-group select:focus {
+  @apply outline-none border-2 border-dark-cyan;
+}
+
+.form-group select::placeholder {
+  @apply text-des-blue font-open-light text-base;
+}
+
+.form-group textarea {
+  @apply w-full h-[100px] rounded-xl text-des-blue font-open-regular py-4 px-4 border border-light-gray text-base transition-colors duration-300;
+}
+
+.form-group textarea:focus {
+  @apply outline-none border-2 border-dark-cyan;
+}
+
+.btn-group {
+  @apply !w-[60%] !flex !flex-row !justify-between !items-center;
+}
+
+.btn-group button {
+  @apply w-[200px] h-[54px] bg-des-blue text-white font-open-regular text-base rounded-xl mt-3 border border-des-blue transition-colors duration-200;
+}
+
+.btn-group button:hover {
+  @apply border-2 bg-transparent text-des-blue;
 }
