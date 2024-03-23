@@ -15,6 +15,17 @@ export default function EmployeesList({ employees }) {
 
   return (
     <div className='employees-list-container'>
+      <div className='list-header'>
+        <ul>
+          <li>Name</li>
+          <li>Surname</li>
+          <li>Job Title</li>
+          <li>Departments</li>
+          <li>Email</li>
+          <li>Phone</li>
+          <li>Employee Status</li>
+        </ul>
+      </div>
       <div className='employees-list'>
         {currentEmployees.length === 0 ? (
           <div className='no-employees'>
@@ -26,7 +37,7 @@ export default function EmployeesList({ employees }) {
           ))
         )}
       </div>
-      <div className='w-full flex flex-row gap-8'>
+      <div className='w-full flex flex-row gap-8 mt-8 md:mt-2'>
         <button
           onClick={() => setCurrentPage(currentPage - 1)}
           disabled={currentPage === 1}
